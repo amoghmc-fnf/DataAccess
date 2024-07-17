@@ -1,0 +1,14 @@
+C:\Users\6147952\source\repos\DataAccessRecap\DataAccessRecap\bin\Debug\net8.0\DataAccessRecap.deps.json
+C:\Users\6147952\source\repos\DataAccessRecap\DataAccessRecap\bin\Debug\net8.0\DataAccessRecap.dll
+C:\Users\6147952\source\repos\DataAccessRecap\DataAccessRecap\bin\Debug\net8.0\DataAccessRecap.pdb
+C:\Users\6147952\source\repos\DataAccessRecap\DataAccessRecap\obj\Debug\net8.0\DataAccessRecap.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\6147952\source\repos\DataAccessRecap\DataAccessRecap\obj\Debug\net8.0\DataAccessRecap.AssemblyInfoInputs.cache
+C:\Users\6147952\source\repos\DataAccessRecap\DataAccessRecap\obj\Debug\net8.0\DataAccessRecap.AssemblyInfo.cs
+C:\Users\6147952\source\repos\DataAccessRecap\DataAccessRecap\obj\Debug\net8.0\DataAccessRecap.csproj.CoreCompileInputs.cache
+C:\Users\6147952\source\repos\DataAccessRecap\DataAccessRecap\obj\Debug\net8.0\DataAccessRecap.dll
+C:\Users\6147952\source\repos\DataAccessRecap\DataAccessRecap\obj\Debug\net8.0\refint\DataAccessRecap.dll
+C:\Users\6147952\source\repos\DataAccessRecap\DataAccessRecap\obj\Debug\net8.0\DataAccessRecap.pdb
+C:\Users\6147952\source\repos\DataAccessRecap\DataAccessRecap\obj\Debug\net8.0\ref\DataAccessRecap.dll
+C:\Users\6147952\source\repos\DataAccessRecap\DataAccessRecap\bin\Debug\net8.0\DataAccessRecap.runtimeconfig.json
+C:\Users\6147952\source\repos\DataAccessRecap\DataAccessRecap\obj\Debug\net8.0\DataAccessRecap.csproj.AssemblyReference.cache
+C:\Users\6147952\source\repos\DataAccessRecap\DataAccessRecap\obj\Debug\net8.0\DataAccessRecap.genruntimeconfig.cache
