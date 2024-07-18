@@ -1,13 +1,6 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="CalcPage.aspx.cs" Inherits="DataAccessWeb.WebForm1" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.Master" AutoEventWireup="true" CodeBehind="CalcPage.aspx.cs" Inherits="DataAccessWeb.CalcPage" %>
 
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-</head>
-<body>
-    <form id="form1" runat="server">
+<asp:Content ID="contentCalcPage" ContentPlaceHolderID="mainContent" runat="server">
         <div>
             <h1>Welcome to calculator</h1>
             <div>
@@ -32,6 +25,4 @@
             <br />
             <asp:Label ID="lblSelected" runat="server" Font-Bold="True" Font-Size="X-Large" />
         </p>
-    </form>
-</body>
-</html>
+</asp:Content>

@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace DataAccessWeb
 {
-    public partial class WebForm1 : System.Web.UI.Page
+    public partial class CalcPage : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
