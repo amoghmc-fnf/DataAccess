@@ -1,13 +1,7 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="FirstPage.aspx.cs" Inherits="DataAccessWeb.FirstPage" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.Master" AutoEventWireup="true" CodeBehind="FirstPage.aspx.cs" Inherits="DataAccessWeb.FirstPage" %>
 
-<!DOCTYPE html>
+<asp:Content ID="contentFirstPage" ContentPlaceHolderID="mainContent" runat="server">
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-</head>
-<body>
-    <form id="form1" runat="server">
         <div>
             <div style="width: 182px; height: 25px">
                 <span>Enter the item to add to cart</span>
@@ -28,6 +22,4 @@
             </asp:ListBox>
             <asp:Label Text="" ID="lblSelected" runat="server" />
         </p>
-    </form>
-</body>
-</html>
+</asp:Content>
