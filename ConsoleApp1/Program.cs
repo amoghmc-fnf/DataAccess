@@ -23,7 +23,7 @@ namespace ConsoleApp1
             service = services.GetRequiredService<IDataService>();
 
             //testUpdatingFeature();
-            testDeletingFeature();
+            //testDeletingFeature();
             testReadingFeature();
             //testAddingFeature();
         }

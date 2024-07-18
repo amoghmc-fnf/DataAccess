@@ -1,0 +1,29 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="DataAccessWeb.Site1" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>Main Page</title>
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <h1>ASP.NET Features</h1>
+    <p>ASP.NET is a server side technology for building rich internet based applications. It provides RAD tool for developing pages using drag n drop features that was available in WinForms of Visual Basic. Please explore the links below to see various features and examples.
+        <br />Happy Coding!!!
+    </p>
+
+    <form id="form1" runat="server">
+        <div>
+            <asp:ContentPlaceHolder ID="mainContent" runat="server">
+                <h1>Child content will be replaced here!!!</h1>
+            </asp:ContentPlaceHolder>
+        </div>
+        <div>
+            <footer>
+                <i>&copy;All rights reserved - FNF India. <% = DateTime.Now.Year.ToString() %></i>
+            </footer>
+        </div>
+    </form>
+</body>
+</html>
