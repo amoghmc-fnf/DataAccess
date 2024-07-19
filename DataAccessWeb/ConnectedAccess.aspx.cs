@@ -56,7 +56,8 @@ namespace DataAccessWeb
         {
             try
             {
-                component.DeleteStudent(Convert.ToInt32(txtId.Text));
+                var selected = int.Parse(lstStudents.SelectedItem.Value);
+                component.DeleteStudent(selected);
                 lblError.Text = "Student deleted successfully from the database";
                 GetAllStudentsFeature();
             }

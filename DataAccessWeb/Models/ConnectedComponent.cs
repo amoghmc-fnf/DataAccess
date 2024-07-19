@@ -35,8 +35,42 @@ namespace DataAccessWeb.Models
         private const string STRDELETE = "DELETE FROM STUDENTTABLE WHERE StudentId = @id";
         #endregion
 
-        #region Implementation
+        
         public void AddNewStudent(Student student)
+        {
+            //AddUsingSqlQuery(student);
+            AddUsingStoredProcedure(student);
+        }
+
+        private void AddUsingStoredProcedure(Student student)
+        {
+            using(SqlConnection conn = new SqlConnection(STRCONNECTION))
+            {
+                SqlCommand cmd = new SqlCommand("AddNewStudent", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@name", student.StudentName);
+                cmd.Parameters.AddWithValue("@email", student.StudentEmail);
+                cmd.Parameters.AddWithValue("@phone", student.StudentPhone);
+                try
+                {
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                }
+                catch (SqlException ex)
+                {
+                    throw new Exception("Error while adding student!", ex);
+                }
+                finally
+                {
+                    conn.Close();
+                }
+
+            }
+        }
+
+        #region Implementation
+        private static void AddUsingSqlQuery(Student student)
         {
             using (SqlConnection conn = new SqlConnection(STRCONNECTION))
             {
