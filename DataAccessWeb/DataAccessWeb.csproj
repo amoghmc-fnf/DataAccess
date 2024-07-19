@@ -113,6 +113,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\DisconnectedComponent.cs" />
     <Compile Include="Models\ConnectedComponent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="CalcPage.aspx.cs">
@@ -129,6 +130,7 @@
     <Compile Include="Main.Master.designer.cs">
       <DependentUpon>Main.Master</DependentUpon>
     </Compile>
+    <Compile Include="Utils\DataComponentFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />

@@ -1,4 +1,5 @@
 ﻿using DataAccessWeb.Models;
+using DataAccessWeb.Utils;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,7 +13,7 @@ namespace DataAccessWeb
 {
     public partial class ConnectedAccess : System.Web.UI.Page
     {
-        static IDataComponent component = new ConnectedComponent();
+        static IDataComponent component = DataComponentFactory.CreateComponent();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
