@@ -5,6 +5,7 @@
 <html>
 <head runat="server">
     <title>Main Page</title>
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
 </head>
 <body>
     <h1>ASP.NET Features</h1>

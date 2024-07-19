@@ -1,3 +1,2 @@
-DataAccessWeb/Scripts/*
-DataAccessWeb/Content/*
-.vs/*
+Scripts/*
+Content/*
