@@ -23,7 +23,7 @@
                 Enter the Email Address:
                 <asp:TextBox runat="server" ID="txtEmail" />
                 <asp:RequiredFieldValidator ErrorMessage="Email is mandatory" ControlToValidate="txtEmail" runat="server" ForeColor="IndianRed" />
-                <%--                <asp:RegularExpressionValidator ErrorMessage="Email is not in the proper format" ControlToValidate="txtEmail" runat="server" />--%>
+                <asp:RegularExpressionValidator ErrorMessage="Email is not in the proper format" ControlToValidate="txtEmail" runat="server" ForeColor="IndianRed" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"/>
             <p>
                 Enter the Age:
                 <asp:TextBox runat="server" ID="txtAge" TextMode="Number" />
