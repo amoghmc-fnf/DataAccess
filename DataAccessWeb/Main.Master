@@ -25,7 +25,8 @@
                     <asp:MenuItem NavigateUrl="~/CalcPage.aspx" Text="Calculator" />
                     <asp:MenuItem NavigateUrl="~/ConnectedAccess.aspx" Text="Connected Access" />
                     <asp:MenuItem NavigateUrl="~/Validation.aspx" Text="Validation" />
-                    <asp:MenuItem NavigateUrl="~/FirstPage.aspx" Text="First Page" />
+                    <asp:MenuItem NavigateUrl="~/SessionState.aspx" Text="Session State" />
+                    <asp:MenuItem NavigateUrl="~/ApplicationState.aspx" Text="Application State" />
 
                 </Items>
                 <StaticHoverStyle BackColor="#666666" ForeColor="White" />
