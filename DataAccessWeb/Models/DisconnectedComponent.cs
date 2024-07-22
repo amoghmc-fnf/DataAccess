@@ -16,21 +16,37 @@ namespace DataAccessWeb.Models
 
         private SqlDataAdapter adapter;
         private DataSet dataSet;
+        private SqlCommandBuilder sqlCommandBuilder;
 
         public DisconnectedComponent()
         {
             adapter = new SqlDataAdapter(SELECTSTATEMENT, _connString);
+            sqlCommandBuilder = new SqlCommandBuilder(adapter);
             dataSet = new DataSet("myTables");
             adapter.Fill(dataSet, "StudentTable");
         }
         public void AddNewStudent(Student student)
         {
-            throw new NotImplementedException();
+            DataRow row = dataSet.Tables[0].NewRow();
+            row[1] = student.StudentName;
+            row[2] = student.StudentEmail;
+            row[3] = student.StudentPhone;
+            dataSet.Tables[0].Rows.Add(row);
+            adapter.Update(dataSet, "StudentTable");
         }
 
         public void DeleteStudent(int studentId)
         {
-            throw new NotImplementedException();
+            foreach (DataRow row in dataSet.Tables[0].Rows)
+            {
+                if (row[0].ToString() == studentId.ToString())
+                {
+                    row.Delete();
+                    adapter.Update(dataSet, "StudentTable");
+                    return;
+                }
+            }
+            throw new Exception("Record not found to delete");
         }
 
         public List<Student> GetAllStudents()
@@ -55,7 +71,19 @@ namespace DataAccessWeb.Models
 
         public void UpdateStudent(Student student)
         {
-            throw new NotImplementedException();
+            foreach (DataRow row in dataSet.Tables[0].Rows)
+            {
+                if (row[0].ToString() == student.StudentId.ToString())
+                {
+                    row[0] = 0;
+                    row[1] = student.StudentName;
+                    row[2] = student.StudentEmail;
+                    row[3] = student.StudentPhone;
+                    adapter.Update(dataSet, "StudentTable");
+                    return;
+                }
+            }
+            throw new Exception("Record cannot be updated as no record is found");
         }
     }
 }

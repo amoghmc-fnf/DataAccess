@@ -12,7 +12,7 @@
                 <td style="width: 235px">
                     <div>
                         <P>
-                            <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="Fetch Details" Width="229px" />
+                            <asp:Button ID="btnFetchDetails" runat="server" OnClick="Button2_Click" Text="Fetch Details" Width="229px" />
                         </P>
                         <hr />
                         <p>
@@ -20,6 +20,8 @@
                         </p>
                         <p>
                             Student Name: <asp:TextBox ID="txtName"  CssClass="form-control" runat="server"/>
+                            <%--<asp:RequiredFieldValidator runat="server" ErrorMessage="Name is mandatory" ForeColor="Red"  ControlToValidate="txtName">
+                            </asp:RequiredFieldValidator>--%>
                         </p>                        
                         <p>
                             Student Email: <asp:TextBox ID="txtEmail"  runat="server" CssClass="form-control" TextMode="Email"/>
