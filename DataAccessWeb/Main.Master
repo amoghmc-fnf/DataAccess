@@ -27,6 +27,7 @@
                     <asp:MenuItem NavigateUrl="~/Validation.aspx" Text="Validation" />
                     <asp:MenuItem NavigateUrl="~/SessionState.aspx" Text="Session State" />
                     <asp:MenuItem NavigateUrl="~/ApplicationState.aspx" Text="Application State" />
+                    <asp:MenuItem NavigateUrl="~/ShoppingCart.aspx" Text="Shopping Cart" />
 
                 </Items>
                 <StaticHoverStyle BackColor="#666666" ForeColor="White" />

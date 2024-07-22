@@ -87,6 +87,16 @@
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="FirstPage.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="Images\applefizz.jpg" />
+    <Content Include="Images\coke.jpg" />
+    <Content Include="Images\iphone.jpg" />
+    <Content Include="Images\maaza.jpg" />
+    <Content Include="Images\motorola.jpg" />
+    <Content Include="Images\nokia.jpg" />
+    <Content Include="Images\oneplus.jpg" />
+    <Content Include="Images\pepsi.jpg" />
+    <Content Include="Images\samsung.jpg" />
+    <Content Include="Images\sprite.jpg" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -94,6 +104,7 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="SessionState.aspx" />
+    <Content Include="ShoppingCart.aspx" />
     <Content Include="Web.config" />
     <Content Include="CalcPage.aspx" />
     <Content Include="Validation.aspx" />
@@ -124,6 +135,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ApplicationData.cs" />
     <Compile Include="Models\DisconnectedComponent.cs" />
     <Compile Include="Models\ConnectedComponent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -147,6 +159,13 @@
     </Compile>
     <Compile Include="SessionState.aspx.designer.cs">
       <DependentUpon>SessionState.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ShoppingCart.aspx.cs">
+      <DependentUpon>ShoppingCart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ShoppingCart.aspx.designer.cs">
+      <DependentUpon>ShoppingCart.aspx</DependentUpon>
     </Compile>
     <Compile Include="Utils\DataComponentFactory.cs" />
     <Compile Include="Validation.aspx.cs">

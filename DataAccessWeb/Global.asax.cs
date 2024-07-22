@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataAccessWeb.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,6 +12,10 @@ namespace DataAccessWeb
     {
         protected void Application_Start(object sender, EventArgs e)
         {
+            var path = Server.MapPath("~//Images");
+            var data = ApplicationData.CreateProducts(path);
+            Application["data"] = data;
         }
+
     }
 }
