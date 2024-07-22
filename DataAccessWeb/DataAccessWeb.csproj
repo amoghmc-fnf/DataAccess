@@ -95,6 +95,7 @@
     <Content Include="Web.config" />
     <Content Include="CalcPage.aspx" />
     <Content Include="Validation.aspx" />
+    <Content Include="StateManagement.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConnectedAccess.aspx.cs">
@@ -138,6 +139,13 @@
     </Compile>
     <Compile Include="Validation.aspx.designer.cs">
       <DependentUpon>Validation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="StateManagement.aspx.cs">
+      <DependentUpon>StateManagement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="StateManagement.aspx.designer.cs">
+      <DependentUpon>StateManagement.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

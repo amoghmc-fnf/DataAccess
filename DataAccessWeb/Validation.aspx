@@ -4,7 +4,6 @@
     <script>
         function ValidateMe(sender, args) {
             if (args.Value === "Trainer" || args.Value === "Trainee") {
-                alert("is Valid")
                 args.IsValid = true;
             } else {
                 alert("Not valid")
@@ -41,12 +40,12 @@
             </p>
             <p>
                 Enter UR Job:
-                <asp:TextBox runat="server" ID="txtJob" />
-                <asp:CustomValidator ErrorMessage="Job should be either a Trainer or Trainee" ControlToValidate="txtJob" runat="server" ForeColor="IndianRed" ClientValidationFunction="ValidateMe" />
+                <asp:TextBox runat="server" ID="txtJob" OnTextChanged="txtJob_TextChanged" />
+                <asp:CustomValidator ErrorMessage="Job should be either a Trainer or Trainee" ControlToValidate="txtJob" runat="server" ForeColor="IndianRed" ClientValidationFunction="ValidateMe" OnServerValidate="Unnamed7_ServerValidate" />
             </p>
         </div>
         <div>
-            <asp:Button Text="Submit" runat="server" />
+            <asp:Button Text="Submit" runat="server" OnClick="Unnamed8_Click" />
         </div>
     </div>
     </a>
