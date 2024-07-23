@@ -12,6 +12,7 @@
     <p>ASP.NET is a server side technology for building rich internet based applications. It provides RAD tool for developing pages using drag n drop features that was available in WinForms of Visual Basic. Please explore the links below to see various features and examples.
         <br />Happy Coding!!!
     </p>
+    <asp:Label Text="" ID="lblUser" runat="server" />
 
     <form id="form1" runat="server">
         <div>
@@ -28,6 +29,7 @@
                     <asp:MenuItem NavigateUrl="~/SessionState.aspx" Text="Session State" />
                     <asp:MenuItem NavigateUrl="~/ApplicationState.aspx" Text="Application State" />
                     <asp:MenuItem NavigateUrl="~/ShoppingCart.aspx" Text="Shopping Cart" />
+                    <asp:MenuItem NavigateUrl="~/Repeater.aspx" Text="Repeater Example" />
 
                 </Items>
                 <StaticHoverStyle BackColor="#666666" ForeColor="White" />

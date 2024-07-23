@@ -85,6 +85,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="EditEmployee.aspx" />
     <Content Include="FirstPage.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Images\applefizz.jpg" />
@@ -97,6 +98,9 @@
     <Content Include="Images\pepsi.jpg" />
     <Content Include="Images\samsung.jpg" />
     <Content Include="Images\sprite.jpg" />
+    <Content Include="LoginPage.aspx" />
+    <Content Include="Registration.aspx" />
+    <Content Include="Repeater.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -125,6 +129,13 @@
     <Compile Include="ConnectedAccess.aspx.designer.cs">
       <DependentUpon>ConnectedAccess.aspx</DependentUpon>
     </Compile>
+    <Compile Include="EditEmployee.aspx.cs">
+      <DependentUpon>EditEmployee.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EditEmployee.aspx.designer.cs">
+      <DependentUpon>EditEmployee.aspx</DependentUpon>
+    </Compile>
     <Compile Include="FirstPage.aspx.cs">
       <DependentUpon>FirstPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -135,9 +146,17 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="LoginPage.aspx.cs">
+      <DependentUpon>LoginPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LoginPage.aspx.designer.cs">
+      <DependentUpon>LoginPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Models\ApplicationData.cs" />
     <Compile Include="Models\DisconnectedComponent.cs" />
     <Compile Include="Models\ConnectedComponent.cs" />
+    <Compile Include="Models\EmployeeDb.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="CalcPage.aspx.cs">
       <DependentUpon>CalcPage.aspx</DependentUpon>
@@ -152,6 +171,20 @@
     </Compile>
     <Compile Include="Main.Master.designer.cs">
       <DependentUpon>Main.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Registration.aspx.cs">
+      <DependentUpon>Registration.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Registration.aspx.designer.cs">
+      <DependentUpon>Registration.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Repeater.aspx.cs">
+      <DependentUpon>Repeater.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Repeater.aspx.designer.cs">
+      <DependentUpon>Repeater.aspx</DependentUpon>
     </Compile>
     <Compile Include="SessionState.aspx.cs">
       <DependentUpon>SessionState.aspx</DependentUpon>
