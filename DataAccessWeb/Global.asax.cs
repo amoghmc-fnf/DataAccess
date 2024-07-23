@@ -16,6 +16,12 @@ namespace DataAccessWeb
             var data = ApplicationData.CreateProducts(path);
             Application["data"] = data;
         }
+     
+        protected void Session_Start(object sender, EventArgs e)
+        {
+            Queue<Product> recentList = new Queue<Product>();
+            Session.Add("recentList", recentList);
+        }
 
     }
 }
