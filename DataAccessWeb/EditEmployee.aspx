@@ -17,14 +17,19 @@
         </p>
         <p>
             Employee Salary:
-            <asp:TextBox runat="server" ID="txtSalary" />
+            <asp:TextBox runat="server" ID="txtSalary" TextMode="Number"/>
         </p>
         <p>
             DeptId:
-            <asp:TextBox runat="server" ID="txtDept" />
+            <asp:TextBox runat="server" ID="txtDept" TextMode="Number"/>
+            <asp:RangeValidator ID="RangeValidator1" runat="server" ControlToValidate="txtDept" ErrorMessage="Must be between 1-5 inclusive" ForeColor="IndianRed" MaximumValue="5" MinimumValue="1" Type="Integer"></asp:RangeValidator>
         </p>
         <p>
-            <asp:Button Text="Submit Changes" runat="server" />
+            <asp:Button Text="Submit Changes" runat="server" OnClick="Unnamed1_Click" />
+            <asp:Button Text="Go Back" runat="server" OnClick="Unnamed2_Click" />
+        </p>
+        <p>
+            <asp:Label ID="lblError" runat="server" ForeColor="IndianRed" />
         </p>
     </div>
 </asp:Content>

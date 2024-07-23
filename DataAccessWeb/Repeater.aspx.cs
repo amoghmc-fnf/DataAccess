@@ -30,7 +30,12 @@ namespace DataAccessWeb
 
         protected void Delete_Click(object sender, EventArgs e)
         {
-
+            var empDb = new EmployeeDb();
+            Button btn = sender as Button;
+            int empId = Convert.ToInt32(btn.CommandArgument);
+            empDb.DeleteEmployee(empId);
+            rpEmployees.DataSource = empDb.GetAllEmployees();
+            rpEmployees.DataBind();
         }
     }
 }

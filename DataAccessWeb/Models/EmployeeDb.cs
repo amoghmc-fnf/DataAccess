@@ -18,6 +18,8 @@ namespace DataAccessWeb.Models
     public class EmployeeDb
     {
         private static readonly string connStr = ConfigurationManager.ConnectionStrings["MyConnectionString"].ConnectionString;
+        private const string STRDELETE = "DELETE From Emptable Where empId = @id";
+        private const string STRUPDATE = "UPDATE EmpTable SET empName = @name, empAddress = @address, empSalary = @salary, deptId = @dept WHERE empId = @id";
 
         public void AddEmployee(Employee emp)
         {
@@ -79,6 +81,67 @@ namespace DataAccessWeb.Models
             {
                 sqlConnection.Close();
                 sqlConnection.Dispose();
+            }
+        }
+
+        public void UpdateEmployee(Employee emp)
+        {
+            using (SqlConnection conn = new SqlConnection(connStr))
+            {
+                try
+                {
+                    SqlCommand cmd = new SqlCommand(STRUPDATE, conn);
+                    conn.Open();
+
+
+                    cmd.Parameters.AddWithValue("@id", emp.EmpId);
+                    cmd.Parameters.AddWithValue("@name", emp.EmpName);
+                    cmd.Parameters.AddWithValue("@address", emp.EmpAddress);
+                    cmd.Parameters.AddWithValue("@salary", emp.EmpSalary);
+                    cmd.Parameters.AddWithValue("@dept", emp.DeptId);
+
+                    var rowsaffected = cmd.ExecuteNonQuery();
+                    if (rowsaffected != 1)
+                    {
+                        throw new Exception($"Employee with the Id {emp.EmpId} does not exist to update");
+                    }
+                }
+                catch (SqlException ex)
+                {
+                    throw new Exception("Error while updating employee!", ex);
+                }
+                finally
+                {
+                    conn.Close();
+                }
+            }
+        }
+
+        internal void DeleteEmployee(int empId)
+        {
+            using (var conn = new SqlConnection(connStr))
+            {
+                try
+                {
+                    var cmd = new SqlCommand(STRDELETE, conn);
+                    conn.Open();
+
+                    //Add the parameters for the delete query
+                    cmd.Parameters.AddWithValue("@id", empId);
+                    var rowsaffected = cmd.ExecuteNonQuery();
+                    if (rowsaffected != 1)
+                    {
+                        throw new Exception($"Employee with the Id {empId} does not exist to delete");
+                    }
+                }
+                catch (SqlException ex)
+                {
+                    throw new Exception("Error in deleting employee", ex);
+                }
+                finally
+                {
+                    conn.Close();
+                }
             }
         }
     }
