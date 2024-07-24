@@ -1,0 +1,32 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <form method="post" asp-action="Index">
+    <div>
+        <input name="firstValue" id="firstValue" placeholder="Enter the first value" type="number" />
+        <select name="slOptions" id="slOptions">
+            <option>Choose one</option>
+            <option>Add</option>
+            <option>Subtract</option>
+            <option>Multiply</option>
+            <option>Divide</option>
+        </select>
+        <input name="secondValue" id="secondValue" placeholder="Enter the second value" type="number" />
+        <button type="submit"> = </button>
+        @if (ViewBag.Result != null)
+        {
+            <span>@ViewBag.Result</span>
+        }
+    </div>
+    </form>
+</body>
+</html>

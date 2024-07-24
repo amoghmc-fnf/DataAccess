@@ -32,7 +32,7 @@ namespace SampleMvcWebApp
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=employee}/{action=AllEmployees}/{id?}");
+                pattern: "{controller=traversing}/{action=index}/{id?}");
 
             app.Run();
         }
