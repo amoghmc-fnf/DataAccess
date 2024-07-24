@@ -1,4 +1,4 @@
-﻿
+﻿@model SampleMvcWebApp.Models.Employee
 @{
     Layout = null;
 }
@@ -11,5 +11,13 @@
     <title>Details</title>
 </head>
 <body>
+    <p>@Model.Id</p>
+    <p>@Model.Name</p>
+    <p>@Model.Address</p>
+    <p>@Model.Salary</p>
+    <p>
+        <img src="@Model.Image" alt="Image of employee" />
+    </p>
+
 </body>
 </html>

@@ -13,7 +13,7 @@ namespace SampleMvcWebApp.Controllers
             employee.Name = "Test";
             employee.Address = "TestAddress";
             employee.Salary = 3000;
-            employee.Image = "Images/testEmployee.jpg";
+            employee.Image = "../Images/testEmployee.jpg";
             return View(employee);
         }
     }
