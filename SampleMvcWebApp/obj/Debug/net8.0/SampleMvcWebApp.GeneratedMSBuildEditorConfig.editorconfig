@@ -26,8 +26,16 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\6147952\source\repos\DataAccessRecap\SampleMvcWebApp
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/6147952/source/repos/DataAccessRecap/SampleMvcWebApp/Views/Employee/AddNew.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVcQWRkTmV3LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/6147952/source/repos/DataAccessRecap/SampleMvcWebApp/Views/Employee/AllEmployees.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVcQWxsRW1wbG95ZWVzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/6147952/source/repos/DataAccessRecap/SampleMvcWebApp/Views/Employee/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/6147952/source/repos/DataAccessRecap/SampleMvcWebApp/Views/Employee/Edit.cshtml]

@@ -1,0 +1,29 @@
+﻿@model SampleMvcWebApp.Models.Employee
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AddNew</title>
+</head>
+<body>
+    <form asp-action="AddNew" method="post">
+        <h1>Add new employee details</h1>
+        <hr/>
+        <div>
+            <p>Employee name: <input asp-for="Name" /></p>
+            <p>Employee address: <input asp-for="Address" /></p>
+            <p>Employee salary: <input asp-for="Salary" /></p>
+            <p>Employee picture: <input asp-for="Image" /></p>
+            <p>
+                <button type="submit">Add new employee</button>
+                <a asp-action="AllEmployees">Back</a>
+            </p>
+        </div>
+    </form>
+</body>
+</html>
