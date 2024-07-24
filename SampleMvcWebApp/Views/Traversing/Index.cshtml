@@ -1,5 +1,8 @@
 ﻿@{
     Layout = null;
+    var Options = new string[4];
+    if (ViewData["options"] != null)
+        Options = ViewData["Options"] as string[];
 }
 
 <!DOCTYPE html>
@@ -14,11 +17,10 @@
     <div>
         <input name="firstValue" id="firstValue" placeholder="Enter the first value" type="number" />
         <select name="slOptions" id="slOptions">
-            <option>Choose one</option>
-            <option>Add</option>
-            <option>Subtract</option>
-            <option>Multiply</option>
-            <option>Divide</option>
+            @foreach (var option in Options)
+            {
+                    <option>@option</option>
+            }
         </select>
         <input name="secondValue" id="secondValue" placeholder="Enter the second value" type="number" />
         <button type="submit"> = </button>

@@ -6,12 +6,16 @@ namespace SampleMvcWebApp.Controllers
     {
         public IActionResult Index()
         {
+            var options = new string[] { "Add", "Subtract", "Multiply", "Divide" };
+            ViewData["options"] = options;
             return View();
         }
 
         [HttpPost]
         public IActionResult Index(IFormCollection formCollection)
         {
+            var options = new string[] { "Add", "Subtract", "Multiply", "Divide" };
+            ViewData["options"] = options;
             var first = double.Parse(formCollection["firstValue"]);
             var second = double.Parse(formCollection["secondValue"]);
             var option = formCollection["slOptions"];
