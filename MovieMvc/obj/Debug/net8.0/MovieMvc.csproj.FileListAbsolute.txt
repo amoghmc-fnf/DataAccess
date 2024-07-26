@@ -251,3 +251,4 @@ C:\Users\6147952\source\repos\DataAccessRecap\MovieMvc\obj\Debug\net8.0\refint\M
 C:\Users\6147952\source\repos\DataAccessRecap\MovieMvc\obj\Debug\net8.0\MovieMvc.pdb
 C:\Users\6147952\source\repos\DataAccessRecap\MovieMvc\obj\Debug\net8.0\MovieMvc.genruntimeconfig.cache
 C:\Users\6147952\source\repos\DataAccessRecap\MovieMvc\obj\Debug\net8.0\ref\MovieMvc.dll
+C:\Users\6147952\source\repos\DataAccessRecap\MovieMvc\bin\Debug\net8.0\libman.json

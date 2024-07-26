@@ -32,7 +32,7 @@ namespace MovieMvc
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Movie}/{action=AllMovies}/{id?}");
+                pattern: "{controller=Home}/{action=Index}/{id?}");
 
             app.Run();
         }

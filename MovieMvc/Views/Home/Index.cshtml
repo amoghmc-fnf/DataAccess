@@ -1,8 +1,97 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿<!DOCTYPE html>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <script src="..\lib\jquery\dist\jquery.js"></script>
+    <link rel="stylesheet" href="..\lib\bootstrap\dist\js\bootstrap.js">
+    <script>
+
+        const url = "moviejson/allmovies"
+
+        function createRow(movie) {
+            const row = `
+            <tr>
+                <td>${movie.title}</td>
+                <td>${movie.description}</td>
+                <td>${movie.director}</td>
+                <td>${movie.cast}</td>
+                <td>${movie.rating}</td>
+                <td>
+                    <a href="#" class="btn btn-secondary" onClick="onEdit(${movie.title})">Edit
+                </td>
+            </tr>`
+            return row
+        }
+
+        function onGetRecordsSuccess(result) {
+            $("table tbody tr").remove();
+            $.each(result, function (index, value) {
+                const row = createRow(value)
+                $("table tbody").append(row)
+            })
+        }
+
+        function showRecords() {
+            $.get(url, onGetRecordsSuccess);
+        }
+        function findRecords() {
+            const title = prompt("Enter the Title that U want to find");
+            const findUrl = `MovieJson/Find?title=${title}`
+            $.get(findUrl, (movie) => {
+                const msg = `${movie.title} was directed by ${movie.director}`
+                alert(msg);
+            });
+        }
+        function addRecord() {
+            alert("add")
+        }
+        function deleteRecords() {
+            alert("delete")
+        }
+
+        function init() {
+            $("#btnShow").click(showRecords);
+            $("#btnFind").click(findRecords);
+            $("#btnAdd").click(addRecord);
+            $("#btnDelete").click(deleteRecords);
+        }
+
+        $(document).ready(init);
+    </script>
+</head>
+<body>
+    <nav class="navbar bg-dark">
+        <button id="btnShow" class="btn btn-info m-4">Show records</button>
+        <button id="btnFind" class="btn btn-primary m-4">Find records</button>
+        <button id="btnAdd" class="btn btn-secondary m-4">Add record</button>
+        <button id="btnDelete" class="btn btn-warning m-4">Delete records</button>
+    </nav>
+    <h1>Purpose of this app</h1>
+    <hr>
+    <div>
+        <p>This app will call the APIs of the MVC Controller and work with the data</p>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-11">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Description</th>
+                            <th>Director</th>
+                            <th>Actors</th>
+                            <th>Duration</th>
+                            <th>Options</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
