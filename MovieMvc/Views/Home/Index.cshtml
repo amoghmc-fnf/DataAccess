@@ -13,13 +13,14 @@
         function createRow(movie) {
             const row = `
             <tr>
+                <td>${movie.Id}</td>
                 <td>${movie.title}</td>
                 <td>${movie.description}</td>
                 <td>${movie.director}</td>
                 <td>${movie.cast}</td>
                 <td>${movie.rating}</td>
                 <td>
-                    <a href="#" class="btn btn-secondary" onClick="onEdit(${movie.id})">Edit
+                    <a href="#" class="btn btn-secondary" onClick="onEdit('${movie.title}')">Edit
                 </td>
                 <td>
                     <a href="#" class="btn btn-danger" onClick="onDelete(${movie.id})">Delete
@@ -29,7 +30,9 @@
         }
 
         function onGetRecordsSuccess(result) {
-            $("table tbody tr").remove();
+            hideAll();
+            $("table").show()
+            $("#txtSearch").show()
             $.each(result, function (index, value) {
                 const row = createRow(value)
                 $("table tbody").append(row)
@@ -45,6 +48,8 @@
             $.get(findUrl, onGetRecordsSuccess);
         }
         function addRecord() {
+            hideAll()
+            $("#divAdd").show()
             const url = "MovieJson/AddMovie";
             let movie = {
                 "title": "The tempest",
@@ -57,14 +62,22 @@
         }
 
         function onDelete(id) {
-            alert("delete")
+            alert("delete" + id)
         }
 
         function onEdit(id) {
-            alert("edit")
+            alert("edit" + id)
+        }
+
+        function hideAll() {
+            $("#divAdd").hide()
+            $("table").hide()
+            $("table tbody tr").remove();
+            $("#txtSearch").hide()
         }
 
         function init() {
+            hideAll()
             $("#btnShow").click(showRecords);
             $("#btnAdd").click(addRecord);
         }
@@ -89,6 +102,7 @@
                 <table class="table table-bordered table-striped">
                     <thead>
                         <tr>
+                            <th>ID</th>
                             <th>Title</th>
                             <th>Description</th>
                             <th>Director</th>
@@ -100,6 +114,30 @@
                     <tbody>
                     </tbody>
                 </table>
+                <div id="divAdd">
+                    <p>
+                        <input placeholder="Id" class="form-control" id="txtId" disabled="true" />
+                    </p>
+                    <p>
+                        <input placeholder="Title" class="form-control" id="txtName" />
+                    </p>
+                    <p>
+                        <input placeholder="Description" class="form-control" id="txtDescription" />
+                    </p>
+                    <p>
+                        <input placeholder="Director" class="form-control" id="txtDirector" />
+                    </p>
+                    <p>
+                        <input placeholder="Cast" class="form-control" id="txtCast" />
+                    </p>
+                    <p>
+                        <input placeholder="Rating" class="form-control" id="txtRating" />
+                    </p>
+                    <p>
+                        <button id="btnSaveChanges" class="btn btn-info">Save Changes</button>
+                        <button id="btnCancelChanges" class="btn btn-danger">Cancel Changes</button>
+                    </p>
+                </div>
             </div>
         </div>
     </div>
