@@ -16,8 +16,8 @@ namespace MovieMvc.Controllers
 
         public JsonResult Find(string Title)
         {
-            var movie = _movieDbContext.Movies.FirstOrDefault(m => m.Title == Title);
-            return Json(movie);
+            var movies = _movieDbContext.Movies.Where((m) => m.Title.Contains(Title)).ToList();
+            return Json(movies);
         }
 
         [HttpPost]

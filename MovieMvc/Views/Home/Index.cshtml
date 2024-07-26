@@ -39,10 +39,7 @@
         function findRecords() {
             const title = prompt("Enter the Title that U want to find");
             const findUrl = `MovieJson/Find?title=${title}`
-            $.get(findUrl, (movie) => {
-                const msg = `${movie.title} was directed by ${movie.director}`
-                alert(msg);
-            });
+            $.get(findUrl, onGetRecordsSuccess);
         }
         function addRecord() {
             alert("add")
