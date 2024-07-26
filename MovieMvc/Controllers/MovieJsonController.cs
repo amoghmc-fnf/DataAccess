@@ -44,7 +44,7 @@ namespace MovieMvc.Controllers
             return "Movie updated in the database!";
         }
 
-        [HttpPut]
+        [HttpPost]
         public string DeleteMovie(int id)
         {
             var found = _movieDbContext.Movies.Where(m => m.Id == id).FirstOrDefault();

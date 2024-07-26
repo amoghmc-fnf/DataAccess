@@ -19,7 +19,7 @@
                 <td>${movie.cast}</td>
                 <td>${movie.rating}</td>
                 <td>
-                    <a href="#" class="btn btn-secondary" onClick="onEdit(${movie.title})">Edit
+                    <a href="#" class="btn btn-secondary" onClick="onEdit(${movie.id})">Edit
                 </td>
                 <td>
                     <a href="#" class="btn btn-danger" onClick="onDelete(${movie.id})">Delete
@@ -45,10 +45,23 @@
             $.get(findUrl, onGetRecordsSuccess);
         }
         function addRecord() {
-            alert("add")
+            const url = "MovieJson/AddMovie";
+            let movie = {
+                "title": "The tempest",
+                "description": "Classic Movie",
+                "director": "Shau Templeton",
+                "cast": "Clint Eastwood",
+                "rating": 8.5
+            }
+            $.post(url, movie, (res) => alert(res));
         }
-        function deleteRecords() {
+
+        function onDelete(id) {
             alert("delete")
+        }
+
+        function onEdit(id) {
+            alert("edit")
         }
 
         function init() {
@@ -59,7 +72,7 @@
         $(document).ready(init);
     </script>
 </head>
-<body>
+<body style="background-color: bisque">
     <nav class="navbar bg-dark">
         <button id="btnShow" class="btn btn-info m-4">Show records</button>
         <button id="btnAdd" class="btn btn-secondary m-4">Add record</button>
@@ -79,8 +92,8 @@
                             <th>Title</th>
                             <th>Description</th>
                             <th>Director</th>
-                            <th>Actors</th>
-                            <th>Duration</th>
+                            <th>Cast</th>
+                            <th>Rating</th>
                             <th colspan="2">Options</th>
                         </tr>
                     </thead>
