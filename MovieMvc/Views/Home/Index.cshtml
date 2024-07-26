@@ -21,6 +21,9 @@
                 <td>
                     <a href="#" class="btn btn-secondary" onClick="onEdit(${movie.title})">Edit
                 </td>
+                <td>
+                    <a href="#" class="btn btn-danger" onClick="onDelete(${movie.id})">Delete
+                </td>
             </tr>`
             return row
         }
@@ -37,7 +40,7 @@
             $.get(url, onGetRecordsSuccess);
         }
         function findRecords() {
-            const title = prompt("Enter the Title that U want to find");
+            const title = $("#txtSearch").val()
             const findUrl = `MovieJson/Find?title=${title}`
             $.get(findUrl, onGetRecordsSuccess);
         }
@@ -50,9 +53,7 @@
 
         function init() {
             $("#btnShow").click(showRecords);
-            $("#btnFind").click(findRecords);
             $("#btnAdd").click(addRecord);
-            $("#btnDelete").click(deleteRecords);
         }
 
         $(document).ready(init);
@@ -61,9 +62,7 @@
 <body>
     <nav class="navbar bg-dark">
         <button id="btnShow" class="btn btn-info m-4">Show records</button>
-        <button id="btnFind" class="btn btn-primary m-4">Find records</button>
         <button id="btnAdd" class="btn btn-secondary m-4">Add record</button>
-        <button id="btnDelete" class="btn btn-warning m-4">Delete records</button>
     </nav>
     <h1>Purpose of this app</h1>
     <hr>
@@ -72,7 +71,8 @@
     </div>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-11">
+            <div class="col-md-12">
+                <input type="search" id="txtSearch" placeholder="Search Movie" class="form-control" onchange="findRecords()"/>
                 <table class="table table-bordered table-striped">
                     <thead>
                         <tr>
@@ -81,7 +81,7 @@
                             <th>Director</th>
                             <th>Actors</th>
                             <th>Duration</th>
-                            <th>Options</th>
+                            <th colspan="2">Options</th>
                         </tr>
                     </thead>
                     <tbody>

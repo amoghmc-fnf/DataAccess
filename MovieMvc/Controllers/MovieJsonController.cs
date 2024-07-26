@@ -43,5 +43,17 @@ namespace MovieMvc.Controllers
             _movieDbContext.SaveChanges();
             return "Movie updated in the database!";
         }
+
+        [HttpPut]
+        public string DeleteMovie(int id)
+        {
+            var found = _movieDbContext.Movies.Where(m => m.Id == id).FirstOrDefault();
+            if (found == null)
+                throw new NullReferenceException("Movie not found to update!");
+
+            _movieDbContext.Remove(found);
+            _movieDbContext.SaveChanges();
+            return "Movie updated in the database!";
+        }
     }
 }
