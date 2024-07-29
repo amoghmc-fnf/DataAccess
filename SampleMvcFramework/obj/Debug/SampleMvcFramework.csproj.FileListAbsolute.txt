@@ -70,3 +70,7 @@ C:\Users\6147952\source\repos\DataAccessRecap\SampleMvcFramework\obj\Debug\Sampl
 C:\Users\6147952\source\repos\DataAccessRecap\SampleMvcFramework\obj\Debug\SampleMv.356B0449.Up2Date
 C:\Users\6147952\source\repos\DataAccessRecap\SampleMvcFramework\obj\Debug\SampleMvcFramework.dll
 C:\Users\6147952\source\repos\DataAccessRecap\SampleMvcFramework\obj\Debug\SampleMvcFramework.pdb
+C:\Users\6147952\source\repos\DataAccessRecap\SampleMvcFramework\bin\EntityFramework.dll
+C:\Users\6147952\source\repos\DataAccessRecap\SampleMvcFramework\bin\EntityFramework.SqlServer.dll
+C:\Users\6147952\source\repos\DataAccessRecap\SampleMvcFramework\bin\EntityFramework.xml
+C:\Users\6147952\source\repos\DataAccessRecap\SampleMvcFramework\bin\EntityFramework.SqlServer.xml

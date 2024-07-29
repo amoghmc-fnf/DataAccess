@@ -100,6 +100,12 @@
     <Content Include="Data\FnfTraining.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>FnfTraining.Context.cs</LastGenOutput>
+      <DependentUpon>FnfTraining.edmx</DependentUpon>
+    </Content>
+    <Content Include="Data\FnfTraining.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>FnfTraining.edmx</DependentUpon>
+      <LastGenOutput>FnfTraining.cs</LastGenOutput>
     </Content>
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
@@ -112,16 +118,25 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>FnfTraining.Context.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\FnfTraining.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FnfTraining.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\FnfTraining.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>FnfTraining.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Data\StockTable.cs">
+      <DependentUpon>FnfTraining.tt</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Stock.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\StockService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -129,9 +144,9 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>FnfTraining.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Data\FnfTraining.edmx.diagram">
+    <Content Include="Data\FnfTraining.edmx.diagram">
       <DependentUpon>FnfTraining.edmx</DependentUpon>
-    </None>
+    </Content>
     <None Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />

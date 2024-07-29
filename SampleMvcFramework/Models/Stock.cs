@@ -18,15 +18,22 @@ namespace SampleMvcFramework.Models
         //    return $"<h1>Stock Name: {StockName}</h1><hr/>";
         //}
 
+        public Stock()
+        {
+            
+        }
+
+        public Stock(int id, string name, string desc, double price)
+        {
+            Id = id;
+            Name = name;
+            Description = desc;
+            UnitPrice = price;
+        }
+
         public static Stock CopyFrom(StockTable row)
         {
-            return new Stock
-            {
-                Id = row.Id,
-                Name = row.Name,
-                Description = row.Description,
-                UnitPrice = row.UnitPrice,
-            };
+            return new Stock(row.Id, row.Name, row.Description, row.UnitPrice);
         }
 
         public static StockTable CopyTo(Stock stock)
