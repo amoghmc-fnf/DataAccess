@@ -23,6 +23,16 @@ namespace SampleWebApi.Controllers
             return result;
         }
 
+        [HttpGet]
+        [Route("Stocks/{id}")]
+        public StockTable GetStock(int id)
+        {
+            var found = _context.StockTables.FirstOrDefault(t => t.Id == id);
+            if (found is null)
+                throw new NullReferenceException("Stock not found!");
+            return found;
+        }
+
         [HttpPost]
         [Route("Stocks")]
         public ObjectResult AddStock(StockTable stock)
