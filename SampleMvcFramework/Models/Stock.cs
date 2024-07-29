@@ -36,15 +36,11 @@ namespace SampleMvcFramework.Models
             return new Stock(row.Id, row.Name, row.Description, row.UnitPrice);
         }
 
-        public static StockTable CopyTo(Stock stock)
+        public static void CopyTo(Stock stock, StockTable stockTable)
         {
-            return new StockTable
-            {
-                Id = stock.Id,
-                Name = stock.Name,
-                Description = stock.Description,
-                UnitPrice = stock.UnitPrice
-            };
+            stockTable.Name = stock.Name;
+            stockTable.Description = stock.Description;
+            stockTable.UnitPrice = stock.UnitPrice;
         }
     }
 }

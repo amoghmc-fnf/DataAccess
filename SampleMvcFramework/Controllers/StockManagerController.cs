@@ -50,5 +50,18 @@ namespace SampleMvcFramework.Controllers
             stockService.UpdateStock(postedData);
             return RedirectToAction("Index");
         }
+
+        public ActionResult OnDelete(int id)
+        {
+            var stock = stockService.GetStock(id);
+            return View(stock);
+        }
+
+        [HttpPost]
+        public ActionResult OnDelete(Stock postedData)
+        {
+            stockService.DeleteStock(postedData.Id);
+            return RedirectToAction("Index");
+        }
     }
 }

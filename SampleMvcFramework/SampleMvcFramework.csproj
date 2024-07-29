@@ -155,6 +155,7 @@
     <Content Include="Views\StockManager\Index.cshtml" />
     <Content Include="Views\StockManager\AddNewStock.cshtml" />
     <Content Include="Views\StockManager\OnEdit.cshtml" />
+    <Content Include="Views\StockManager\OnDelete.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

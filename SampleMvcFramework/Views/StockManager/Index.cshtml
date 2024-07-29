@@ -13,7 +13,7 @@
                 <th>Stock Name</th>
                 <th>Stock Description</th>
                 <th>Unit Price</th>
-                <th>Options</th>
+                <th colspan="2">Options</th>
             </tr>
         </thead>
         <tbody>
@@ -25,6 +25,7 @@
                     <td>@stock.Description</td>
                     <td>@stock.UnitPrice</td>
                     <td>@Html.ActionLink("Edit", "OnEdit", new { id = stock.Id })</td>
+                    <td>@Html.ActionLink("Delete", "OnDelete", new { id = stock.Id })</td>
                 </tr>
             }
         </tbody>

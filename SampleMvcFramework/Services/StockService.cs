@@ -73,9 +73,7 @@ namespace SampleMvcFramework.Services
             if (found is null)
                 throw new NullReferenceException("Stock not found to update!");
 
-            found.Name = stock.Name;
-            found.Description = stock.Description;
-            found.UnitPrice = stock.UnitPrice;
+            Stock.CopyTo(stock, found);
             _trainingEntities.SaveChanges();
         }
     }
