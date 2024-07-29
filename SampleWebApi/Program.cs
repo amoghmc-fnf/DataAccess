@@ -1,4 +1,6 @@
 
+using SampleWebApi.Data;
+
 namespace SampleWebApi
 {
     public class Program
@@ -13,6 +15,8 @@ namespace SampleWebApi
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+            builder.Services.AddDbContext<FnfTrainingContext>();
 
             var app = builder.Build();
 
