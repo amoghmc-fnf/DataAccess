@@ -24,7 +24,7 @@
             @Html.LabelFor(m => m.UnitPrice)
             @Html.DisplayFor(m => m.UnitPrice)
         </p>
-        <button type="submit">Delete stock</button>
-        @Html.ActionLink("Go Back", "Index")
+        <button class="btn btn-danger"  type="submit">Delete stock</button>
+        @Html.ActionLink("Go Back", "Index", new {}, new { @class = "btn btn-warning" })
     </div>
 }

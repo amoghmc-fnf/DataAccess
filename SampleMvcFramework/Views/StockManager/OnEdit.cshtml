@@ -24,7 +24,7 @@
             @Html.LabelFor(m => m.UnitPrice)
             @Html.EditorFor(m => m.UnitPrice)
         </p>
-        <button type="submit">Update stock</button>
-        @Html.ActionLink("Go Back", "Index")
+        <button class="btn btn-info" type="submit">Update stock</button>
+        @Html.ActionLink("Go Back", "Index", new { }, new { @class = "btn btn-warning" })
     </div>
 }
