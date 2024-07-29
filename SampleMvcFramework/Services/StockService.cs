@@ -53,13 +53,7 @@ namespace SampleMvcFramework.Services
             var stocks = new List<Stock>();
             foreach (var stock in _trainingEntities.StockTables)
             {
-                stocks.Add(new Stock
-                {
-                    Id = stock.Id,
-                    Name = stock.Name,
-                    Description = stock.Description,
-                    UnitPrice = stock.UnitPrice
-                });
+                stocks.Add(Stock.CopyFrom(stock));
             }
             return stocks;
         }
@@ -70,13 +64,7 @@ namespace SampleMvcFramework.Services
             if (found is null)
                 throw new NullReferenceException("Stock not found!");
 
-            return new Stock
-            {
-                Id = found.Id,
-                Name = found.Name,
-                Description = found.Description,
-                UnitPrice = found.UnitPrice
-            };
+            return Stock.CopyFrom(found);
         }
 
         public void UpdateStock(Stock stock)
@@ -85,10 +73,7 @@ namespace SampleMvcFramework.Services
             if (found is null)
                 throw new NullReferenceException("Stock not found to update!");
 
-            found.Name = stock.Name;
-            found.Description = stock.Description;
-            found.UnitPrice = stock.UnitPrice;
-            _trainingEntities.SaveChanges();
+            found = Stock.CopyTo(stock);
         }
     }
 }
