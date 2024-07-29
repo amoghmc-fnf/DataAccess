@@ -1,0 +1,26 @@
+﻿@model SampleMvcFramework.Models.Stock
+
+@{
+    ViewBag.Title = "AddNewStock";
+}
+
+<h2>AddNewStock</h2>
+@using (Html.BeginForm())
+{
+    <div>
+        <p>
+            @Html.LabelFor(m => m.Name)
+            @Html.EditorFor(m => m.Name)
+        </p>
+        <p>
+            @Html.LabelFor(m => m.Description)
+            @Html.EditorFor(m => m.Description)
+        </p>
+        <p>
+            @Html.LabelFor(m => m.UnitPrice)
+            @Html.EditorFor(m => m.UnitPrice)
+        </p>
+        <button type="submit">Save changes</button>
+    </div>
+}
+

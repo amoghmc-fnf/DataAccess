@@ -1,0 +1,33 @@
+﻿@model List<SampleMvcFramework.Models.Stock>
+@{
+    ViewBag.Title = "Index";
+}
+
+@Html.ActionLink("Add new stock", "AddNewStock")
+<hr />
+<div>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Stock Id</th>
+                <th>Stock Name</th>
+                <th>Stock Description</th>
+                <th>Unit Price</th>
+                <th>Options</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var stock in Model)
+            {
+                <tr>
+                    <td>@stock.Id</td>
+                    <td>@stock.Name</td>
+                    <td>@stock.Description</td>
+                    <td>@stock.UnitPrice</td>
+                    <td>@Html.ActionLink("Edit", "OnEdit", new { id = stock.Id })</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
