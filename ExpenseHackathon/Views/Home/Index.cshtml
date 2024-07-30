@@ -11,11 +11,13 @@
         const url = "expense/allexpenses"
 
         function createRow(expense) {
+            let date = String(expense.date)
+            shortDate = date.split("T")[0]
             const row = `
                     <tr>
                         <td>${expense.serialNo}</td>
                         <td>${expense.description}</td>
-                        <td>${expense.date}</td>
+                        <td>${shortDate}</td>
                         <td>${expense.amount}</td>
                     </tr>`
             return row
@@ -95,20 +97,17 @@
         }
 
         function showDescription() {
+            hideAll()
             $("#txtSearch").show()
-            $("#txtSearchDate").hide()
-            $("#txtSearchMonth").hide()
         }
 
         function showDate() {
-            $("#txtSearch").hide()
+            hideAll()
             $("#txtSearchDate").show()
-            $("#txtSearchMonth").hide()
         }
 
         function showMonth() {
-            $("#txtSearch").hide()
-            $("#txtSearchDate").hide()
+            hideAll()
             $("#txtSearchMonth").show()
         }
 
@@ -161,21 +160,21 @@
                     <tbody>
                     </tbody>
                 </table>
-                <div id="divAdd">
-                    <p>
-                        <input placeholder="Description" required class="form-control" id="txtDescription" />
-                    </p>
-                    <p>
-                        <input placeholder="Date" type="date" required class="form-control" id="txtDate" />
-                    </p>
-                    <p>
-                        <input placeholder="Amount" type="number" required class="form-control" id="txtAmount" />
-                    </p>
-                    <p>
-                        <button id="btnSaveChanges" onclick="addMovie()" class="btn btn-info">Save Changes</button>
-                        <button id="btnCancelChanges" onclick="cancelChanges()" class="btn btn-danger">Cancel Changes</button>
-                    </p>
-                </div>
+                    <div id="divAdd">
+                        <p>
+                            <input placeholder="Description" required class="form-control" id="txtDescription" />
+                        </p>
+                        <p>
+                            <input placeholder="Date" type="date" required class="form-control" id="txtDate" />
+                        </p>
+                        <p>
+                        <input placeholder="Amount" type="number" min="0.01" required pattern="[0-9]+" class="form-control" id="txtAmount" />
+                        </p>
+                        <p>
+                            <button id="btnSaveChanges" onclick="addMovie()" class="btn btn-info">Save Changes</button>
+                            <button id="btnCancelChanges" onclick="cancelChanges()" class="btn btn-danger">Cancel Changes</button>
+                        </p>
+                    </div>
             </div>
         </div>
     </div>

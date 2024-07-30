@@ -24,7 +24,6 @@ namespace ExpenseHackathon.Controllers
         [HttpGet]
         public JsonResult FindByDate(DateTime date)
         {
-            var formattedDate = date.GetDateTimeFormats();
             var expenses = expenseDbContext.Expenses.Where((e) => e.Date.Equals(date)).ToList();
             return Json(expenses);
         }
@@ -41,6 +40,8 @@ namespace ExpenseHackathon.Controllers
         [HttpPost]
         public string AddExpense(Expense expense)
         {
+            if (expense.Amount < 0)
+                throw new Exception("Amount cannot be negative!");
             expenseDbContext.Expenses.Add(expense);
             expenseDbContext.SaveChanges();
             return "Expense added successfully!";
