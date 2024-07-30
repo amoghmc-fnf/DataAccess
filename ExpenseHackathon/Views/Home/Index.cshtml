@@ -13,7 +13,7 @@
         function createRow(expense) {
             const row = `
                     <tr>
-                        <td>${expense.serialno}</td>
+                        <td>${expense.serialNo}</td>
                         <td>${expense.description}</td>
                         <td>${expense.date}</td>
                         <td>${expense.amount}</td>
@@ -37,7 +37,7 @@
 
         function findRecords() {
             const desc = $("#txtSearch").val()
-            const findUrl = `Expenses/FindByDescription?description=${desc}`
+            const findUrl = `Expense/FindByDescription?description=${desc}`
             $.get(findUrl, onGetRecordsSuccess);
         }
 
@@ -58,7 +58,7 @@
             const amount = $("#txtAmount").val()
 
             let expense = {
-                "id": 0,
+                "serialNo": 0,
                 "description": desc,
                 "date": date,
                 "amount": amount
@@ -108,7 +108,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
-                <input type="search" id="txtSearch" placeholder="Search Movie" class="form-control" onchange="findRecords()" />
+                <input type="search" id="txtSearch" placeholder="Search by description" class="form-control" onchange="findRecords()" />
                 <table class="table table-bordered table-striped">
                     <thead>
                         <tr>
