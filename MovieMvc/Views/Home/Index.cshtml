@@ -13,14 +13,14 @@
         function createRow(movie) {
             const row = `
             <tr>
-                <td>${movie.Id}</td>
+                <td>${movie.id}</td>
                 <td>${movie.title}</td>
                 <td>${movie.description}</td>
                 <td>${movie.director}</td>
                 <td>${movie.cast}</td>
                 <td>${movie.rating}</td>
                 <td>
-                    <a href="#" class="btn btn-secondary" onClick="onEdit('${movie.title}')">Edit
+                    <a href="#" class="btn btn-secondary" onClick="onEdit('${movie.id}')">Edit
                 </td>
                 <td>
                     <a href="#" class="btn btn-danger" onClick="onDelete(${movie.id})">Delete
@@ -42,31 +42,62 @@
         function showRecords() {
             $.get(url, onGetRecordsSuccess);
         }
+
         function findRecords() {
             const title = $("#txtSearch").val()
             const findUrl = `MovieJson/Find?title=${title}`
             $.get(findUrl, onGetRecordsSuccess);
         }
+
         function addRecord() {
             hideAll()
             $("#divAdd").show()
-            const url = "MovieJson/AddMovie";
-            let movie = {
-                "title": "The tempest",
-                "description": "Classic Movie",
-                "director": "Shau Templeton",
-                "cast": "Clint Eastwood",
-                "rating": 8.5
-            }
-            $.post(url, movie, (res) => alert(res));
+            $("#txtId").hide()
+            onCancel()
+            // const url = "MovieJson/AddMovie";
+            // let movie = {
+            //     "title": "The tempest",
+            //     "description": "Classic Movie",
+            //     "director": "Shau Templeton",
+            //     "cast": "Clint Eastwood",
+            //     "rating": 8.5
+            // }
+            // $.post(url, movie, (res) => alert(res));
+        }
+
+        function onUpdate() {
+
+        }
+
+        function onCancel() {
+            $("input").val("")
         }
 
         function onDelete(id) {
-            alert("delete" + id)
+            let ans = confirm("Are you sure you want to delete this movie?")
+            if (ans)
+            {
+                const url = "MovieJson/DeleteMovie"
+                $.post(url, id, (res) => alert(res))
+            }
+
         }
 
         function onEdit(id) {
-            alert("edit" + id)
+            hideAll()
+            $("#divAdd").show()
+            const findUrl = `MovieJson/GetMovie?id=${id}`
+            $.get(findUrl, populate);
+
+        }
+
+        function populate(movie) {
+            $("#txtId").val(movie.id)
+            $("#txtName").val(movie.title)
+            $("#txtDescription").val(movie.description)
+            $("#txtDirector").val(movie.director)
+            $("#txtCast").val(movie.cast)
+            $("#txtRating").val(movie.rating)
         }
 
         function hideAll() {
@@ -82,7 +113,11 @@
             $("#btnAdd").click(addRecord);
         }
 
-        $(document).ready(init);
+        $(document).ready(function () {
+            init();
+            $("#btnSaveChanges").click(onUpdate);
+            $("#btnCancelChanges").click(onCancel);
+        });
     </script>
 </head>
 <body style="background-color: bisque">
@@ -116,26 +151,26 @@
                 </table>
                 <div id="divAdd">
                     <p>
-                        <input placeholder="Id" class="form-control" id="txtId" disabled="true" />
+                        <input placeholder="Id" disabled class="form-control" id="txtId" disabled="true" />
                     </p>
                     <p>
-                        <input placeholder="Title" class="form-control" id="txtName" />
+                        <input placeholder="Title" required class="form-control" id="txtName" />
                     </p>
                     <p>
-                        <input placeholder="Description" class="form-control" id="txtDescription" />
+                        <input placeholder="Description" required class="form-control" id="txtDescription" />
                     </p>
                     <p>
-                        <input placeholder="Director" class="form-control" id="txtDirector" />
+                        <input placeholder="Director" required class="form-control" id="txtDirector" />
                     </p>
                     <p>
-                        <input placeholder="Cast" class="form-control" id="txtCast" />
+                        <input placeholder="Cast" required class="form-control" id="txtCast" />
                     </p>
                     <p>
-                        <input placeholder="Rating" class="form-control" id="txtRating" />
+                        <input placeholder="Rating" required class="form-control" id="txtRating" />
                     </p>
                     <p>
-                        <button id="btnSaveChanges" class="btn btn-info">Save Changes</button>
-                        <button id="btnCancelChanges" class="btn btn-danger">Cancel Changes</button>
+                        <button id="btnSaveChanges" onclick="addMovie()" class="btn btn-info">Save Changes</button>
+                        <button id="btnCancelChanges" onclick="cancelChanges()" class="btn btn-danger">Cancel Changes</button>
                     </p>
                 </div>
             </div>

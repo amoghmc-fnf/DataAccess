@@ -20,6 +20,15 @@ namespace MovieMvc.Controllers
             return Json(movies);
         }
 
+        public JsonResult GetMovie(int Id)
+        {
+            var movie = _movieDbContext.Movies.Where((m) => m.Id == Id).FirstOrDefault();
+            if (movie == null)
+                throw new NullReferenceException("Movie not found!");
+            return Json(movie);
+
+        }
+
         [HttpPost]
         public string AddMovie(Movie movie)
         {
@@ -53,7 +62,7 @@ namespace MovieMvc.Controllers
 
             _movieDbContext.Remove(found);
             _movieDbContext.SaveChanges();
-            return "Movie updated in the database!";
+            return "Movie deleted in the database!";
         }
     }
 }
