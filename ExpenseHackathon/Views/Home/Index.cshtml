@@ -1,8 +1,146 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿<!DOCTYPE html>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css">
+    <script>
+
+        const url = "expense/allexpenses"
+
+        function createRow(expense) {
+            const row = `
+                    <tr>
+                        <td>${expense.serialno}</td>
+                        <td>${expense.description}</td>
+                        <td>${expense.date}</td>
+                        <td>${expense.amount}</td>
+                    </tr>`
+            return row
+        }
+
+        function onGetRecordsSuccess(result) {
+            hideAll();
+            $("table").show()
+            $("#txtSearch").show()
+            $.each(result, function (index, value) {
+                const row = createRow(value)
+                $("table tbody").append(row)
+            })
+        }
+
+        function showRecords() {
+            $.get(url, onGetRecordsSuccess);
+        }
+
+        function findRecords() {
+            const desc = $("#txtSearch").val()
+            const findUrl = `Expenses/FindByDescription?description=${desc}`
+            $.get(findUrl, onGetRecordsSuccess);
+        }
+
+        function addRecord() {
+            hideAll()
+            $("#divAdd").show()
+            $("#lblError").val("")
+            onCancel()
+        }
+
+        function onCancel() {
+            $("input").val("")
+        }
+
+        function onUpdate() {
+            const desc = $("#txtDescription").val()
+            const date = $("#txtDate").val()
+            const amount = $("#txtAmount").val()
+
+            let expense = {
+                "id": 0,
+                "description": desc,
+                "date": date,
+                "amount": amount
+            }
+
+
+            const url = "Expense/AddExpense";
+            $.post(url, expense, (res) => alert(res));
+        }
+
+        function populate(expense) {
+            $("#txtDescription").val(expense.description)
+            $("#txtDate").val(expense.date)
+            $("#txtAmount").val(expense.amount)
+        }
+
+        function hideAll() {
+            $("#divAdd").hide()
+            $("table").hide()
+            $("table tbody tr").remove();
+            $("#txtSearch").hide()
+        }
+
+        function init() {
+            hideAll()
+            $("#btnShow").click(showRecords);
+            $("#btnAdd").click(addRecord);
+        }
+
+        $(document).ready(function () {
+            init();
+            $("#btnSaveChanges").click(onUpdate);
+            $("#btnCancelChanges").click(onCancel);
+        });
+    </script>
+</head>
+<body style="background-color: bisque">
+    <nav class="navbar bg-dark">
+        <button id="btnShow" class="btn btn-info m-4">Show records</button>
+        <button id="btnAdd" class="btn btn-secondary m-4">Add record</button>
+    </nav>
+    <h1>Personal Expenses Tracker</h1>
+    <hr>
+    <div>
+        <p>This app is used to track your personal expenses</p>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <input type="search" id="txtSearch" placeholder="Search Movie" class="form-control" onchange="findRecords()" />
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>Serial No.</th>
+                            <th>Description</th>
+                            <th>Date</th>
+                            <th>Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+                <div id="divAdd">
+                    <p>
+                        <input placeholder="Description" required class="form-control" id="txtDescription" />
+                    </p>
+                    <p>
+                        <input placeholder="Date" type="date" required class="form-control" id="txtDate" />
+                    </p>
+                    <p>
+                        <input placeholder="Amount" type="number" required class="form-control" id="txtAmount" />
+                    </p>
+                    <p>
+                        <button id="btnSaveChanges" onclick="addMovie()" class="btn btn-info">Save Changes</button>
+                        <button id="btnCancelChanges" onclick="cancelChanges()" class="btn btn-danger">Cancel Changes</button>
+                    </p>
+                    <p>
+                        <label id="lblError"></label>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
