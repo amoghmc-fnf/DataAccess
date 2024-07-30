@@ -24,7 +24,6 @@
         function onGetRecordsSuccess(result) {
             hideAll();
             $("table").show()
-            $("#txtSearch").show()
             $.each(result, function (index, value) {
                 const row = createRow(value)
                 $("table tbody").append(row)
@@ -41,10 +40,21 @@
             $.get(findUrl, onGetRecordsSuccess);
         }
 
+        function findRecordsDate() {
+            const date = $("#txtSearchDate").val()
+            const findUrl = `Expense/FindByDate?date=${date}`
+            $.get(findUrl, onGetRecordsSuccess);
+        }
+
+        function findRecordsMonth() {
+            const month = $("#txtSearchMonth").val()
+            const findUrl = `Expense/FindByMonth?month=${month}`
+            $.get(findUrl, onGetRecordsSuccess);
+        }
+
         function addRecord() {
             hideAll()
             $("#divAdd").show()
-            $("#lblError").val("")
             onCancel()
         }
 
@@ -80,6 +90,26 @@
             $("table").hide()
             $("table tbody tr").remove();
             $("#txtSearch").hide()
+            $("#txtSearchDate").hide()
+            $("#txtSearchMonth").hide()
+        }
+
+        function showDescription() {
+            $("#txtSearch").show()
+            $("#txtSearchDate").hide()
+            $("#txtSearchMonth").hide()
+        }
+
+        function showDate() {
+            $("#txtSearch").hide()
+            $("#txtSearchDate").show()
+            $("#txtSearchMonth").hide()
+        }
+
+        function showMonth() {
+            $("#txtSearch").hide()
+            $("#txtSearchDate").hide()
+            $("#txtSearchMonth").show()
         }
 
         function init() {
@@ -92,12 +122,20 @@
             init();
             $("#btnSaveChanges").click(onUpdate);
             $("#btnCancelChanges").click(onCancel);
+
+            $("#btnDescription").click(showDescription);
+            $("#btnDate").click(showDate);
+            $("#btnMonth").click(showMonth);
+
         });
     </script>
 </head>
 <body style="background-color: bisque">
     <nav class="navbar bg-dark">
         <button id="btnShow" class="btn btn-info m-4">Show records</button>
+        <button id="btnDescription" class="btn btn-primary m-4">Find by description</button>
+        <button id="btnDate" class="btn btn-primary m-4">Find by date</button>
+        <button id="btnMonth" class="btn btn-primary m-4">Find by month</button>
         <button id="btnAdd" class="btn btn-secondary m-4">Add record</button>
     </nav>
     <h1>Personal Expenses Tracker</h1>
@@ -109,6 +147,8 @@
         <div class="row">
             <div class="col-md-12">
                 <input type="search" id="txtSearch" placeholder="Search by description" class="form-control" onchange="findRecords()" />
+                <input type="date" id="txtSearchDate" placeholder="Search by date" class="form-control" onchange="findRecordsDate()" />
+                <input type="month" id="txtSearchMonth" placeholder="Search by month" class="form-control" onchange="findRecordsMonth()" />
                 <table class="table table-bordered table-striped">
                     <thead>
                         <tr>
@@ -134,9 +174,6 @@
                     <p>
                         <button id="btnSaveChanges" onclick="addMovie()" class="btn btn-info">Save Changes</button>
                         <button id="btnCancelChanges" onclick="cancelChanges()" class="btn btn-danger">Cancel Changes</button>
-                    </p>
-                    <p>
-                        <label id="lblError"></label>
                     </p>
                 </div>
             </div>

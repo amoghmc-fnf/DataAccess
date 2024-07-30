@@ -30,10 +30,11 @@ namespace ExpenseHackathon.Controllers
         }
 
         [HttpGet]
-        public JsonResult FindByMonth(DateTime date)
+        public JsonResult FindByMonth(DateTime month)
         {
-            var expenses = expenseDbContext.Expenses.Where((e) => 
-                (e.Date.Month.Equals(date.Month) && e.Date.Year.Equals(date.Year))).ToList();
+            var expenses = expenseDbContext.Expenses.Where((e) =>
+                (e.Date.Month.Equals(month.Month) && e.Date.Year.Equals(month.Year))).ToList();
+
             return Json(expenses);
         }
 
