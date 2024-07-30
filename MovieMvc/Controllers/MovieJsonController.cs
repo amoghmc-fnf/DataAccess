@@ -37,7 +37,7 @@ namespace MovieMvc.Controllers
             return "Movie saved to database!";
         }
 
-        [HttpPut]
+        [HttpPost]
         public string UpdateMovie(Movie movie)
         {
             var found = _movieDbContext.Movies.Where(m => m.Id == movie.Id).FirstOrDefault();

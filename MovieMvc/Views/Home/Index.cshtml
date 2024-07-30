@@ -53,20 +53,37 @@
             hideAll()
             $("#divAdd").show()
             $("#txtId").hide()
+            $("#lblError").val("")
             onCancel()
-            // const url = "MovieJson/AddMovie";
-            // let movie = {
-            //     "title": "The tempest",
-            //     "description": "Classic Movie",
-            //     "director": "Shau Templeton",
-            //     "cast": "Clint Eastwood",
-            //     "rating": 8.5
-            // }
-            // $.post(url, movie, (res) => alert(res));
         }
 
         function onUpdate() {
+            const id = $("#txtId").val()
+            const name = $("#txtName").val()
+            const desc = $("#txtDescription").val()
+            const director = $("#txtDirector").val()
+            const cast = $("#txtCast").val()
+            const rating = $("#txtRating").val()
 
+            let movie = {
+                "id": id,
+                "title": name,
+                "description": desc,
+                "director": director,
+                "cast": cast,
+                "rating": rating
+            }
+            
+
+            const hidden = $("#txtId").is(":hidden");
+            if (hidden) {
+                const url = "MovieJson/AddMovie";
+                $.post(url, movie, (res) => $("#lblError").val(res));
+            }
+            else {
+                const url = "MovieJson/UpdateMovie";
+                $.post(url, movie, (res) => $("#lblError").val(res));
+            }
         }
 
         function onCancel() {
@@ -77,8 +94,9 @@
             let ans = confirm("Are you sure you want to delete this movie?")
             if (ans)
             {
-                const url = "MovieJson/DeleteMovie"
+                const url = `MovieJson/DeleteMovie?id=${id}`
                 $.post(url, id, (res) => alert(res))
+                showRecords()
             }
 
         }
@@ -88,7 +106,7 @@
             $("#divAdd").show()
             const findUrl = `MovieJson/GetMovie?id=${id}`
             $.get(findUrl, populate);
-
+            $("#lblError").val("")
         }
 
         function populate(movie) {
@@ -151,7 +169,7 @@
                 </table>
                 <div id="divAdd">
                     <p>
-                        <input placeholder="Id" disabled class="form-control" id="txtId" disabled="true" />
+                        <input placeholder="Id" class="form-control" id="txtId" disabled="true" />
                     </p>
                     <p>
                         <input placeholder="Title" required class="form-control" id="txtName" />
@@ -171,6 +189,9 @@
                     <p>
                         <button id="btnSaveChanges" onclick="addMovie()" class="btn btn-info">Save Changes</button>
                         <button id="btnCancelChanges" onclick="cancelChanges()" class="btn btn-danger">Cancel Changes</button>
+                    </p>
+                    <p>
+                        <label id="lblError"></label>
                     </p>
                 </div>
             </div>
