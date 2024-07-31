@@ -11,7 +11,7 @@
                 <tr>
                     <th>Stock Id</th>
                     <th>Stock Name</th>
-                    <th>Options</th>
+                    <th colspan="2">Options</th>
                 </tr>
             </thead>
             <tbody>
@@ -22,6 +22,9 @@
                         <td>@item.Name</td>
                         <td>
                             <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info">Details</a>
+                        </td>
+                        <td>
+                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
                         </td>
                     </tr>
                 }

@@ -58,6 +58,27 @@ namespace SampleWebApiMvcClient.Controllers
             }
         }
 
+        public IActionResult Delete(int id)
+        {
+            var model = _stockService.GetStockById(id);
+            return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult Delete(Stock postedData)
+        {
+            try
+            {
+                _stockService.DeleteStock(postedData.Id);
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Error = ex.Message;
+                return View(postedData);
+            }
+        }
+
         public IActionResult Privacy()
         {
             return View();
