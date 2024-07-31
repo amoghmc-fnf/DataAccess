@@ -38,7 +38,7 @@ namespace SampleWebApiMvcClient.Services
         public void AddNewStock(Stock stock)
         {
             var json = JsonSerializer.Serialize(stock);
-            var content = new StringContent(json);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
             var response = httpClient.PostAsync("Stocks", content).Result;
             Console.WriteLine(response.Content.ReadAsStringAsync().Result);
         }

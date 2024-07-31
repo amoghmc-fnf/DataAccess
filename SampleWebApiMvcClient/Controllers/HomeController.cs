@@ -41,6 +41,23 @@ namespace SampleWebApiMvcClient.Controllers
             }
         }
 
+        public IActionResult Add() => View(new Stock());
+
+        [HttpPost]
+        public IActionResult Add(Stock postedData)
+        {
+            try
+            {
+                _stockService.AddNewStock(postedData);
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Error = ex.Message;
+                return View(postedData);
+            }
+        }
+
         public IActionResult Privacy()
         {
             return View();
