@@ -41,5 +41,30 @@ namespace SampleWebApi.Controllers
             _context.SaveChanges();
             return Ok("Added successfully!");
         }
+
+        [HttpPut]
+        [Route("Stocks")]
+        public IActionResult PutStock(StockTable stock)
+        {
+            var found = _context.StockTables.FirstOrDefault(t => t.Id == stock.Id);
+            if (found is null)
+                return NotFound("Stock not found to update!");
+            found.Name = stock.Name;
+            found.Description = stock.Description;
+            found.UnitPrice = stock.UnitPrice;
+            return Ok("Updated successfully!");
+        }
+
+        [HttpDelete]
+        [Route("Stocks/{id}")]
+        public IActionResult DeleteStock(int id)
+        {
+            var found = _context.StockTables.FirstOrDefault(t => t.Id == id);
+            if (found is null)
+                return NotFound("Stock not found to delete!");
+            _context.StockTables.Remove(found);
+            _context.SaveChanges();
+            return Ok(found);
+        }
     }
 }
