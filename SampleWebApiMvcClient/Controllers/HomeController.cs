@@ -20,6 +20,27 @@ namespace SampleWebApiMvcClient.Controllers
             return View(stocks);
         }
 
+        public IActionResult Details(int id)
+        {
+            var model = _stockService.GetStockById(id);
+            return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult Details(Stock postedData)
+        {
+            try
+            {
+                _stockService.UpdateStock(postedData);
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Error = ex.Message;
+                return View(postedData);
+            }
+        }
+
         public IActionResult Privacy()
         {
             return View();

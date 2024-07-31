@@ -1,4 +1,5 @@
 ﻿using SampleWebApiMvcClient.Models;
+using System.Text;
 using System.Text.Json;
 
 namespace SampleWebApiMvcClient.Services
@@ -21,13 +22,15 @@ namespace SampleWebApiMvcClient.Services
         }
         public List<Stock> GetAllStocks()
         {
-            List<Stock> stocks = new List<Stock>();
-            var response = httpClient.GetAsync("Stocks");
-            var data = response.Result.Content.ReadAsStringAsync().Result;
+            List<Stock>? stocks = new List<Stock>();
+            var data = httpClient.GetStreamAsync("Stocks").Result;
 
-            if (data != "")
+            if (data != null)
             {
-                stocks = JsonSerializer.Deserialize<List<Stock>>(data);
+                stocks = JsonSerializer.DeserializeAsync<List<Stock>>(data, new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true
+                }).Result;
             }
             return stocks;
         }
@@ -45,17 +48,30 @@ namespace SampleWebApiMvcClient.Services
         {
             var stock = new Stock();
             
-            using (var response = httpClient.GetAsync($"Stocks/{id}"))
+            using (var response = httpClient.GetStreamAsync($"Stocks/{id}"))
             {
-                var data = response.Result.Content?.ReadAsStringAsync().Result;
-                stock = JsonSerializer.Deserialize<Stock>(data);
+                var data = response.Result;
+                stock = JsonSerializer.DeserializeAsync<Stock>(data, new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true
+                }).Result;
             }
             return stock;
         }
 
         public void UpdateStock(Stock stock)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var jsonContent = JsonSerializer.Serialize(stock);
+                var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
+                var result = httpClient.PutAsync("Stocks", content).Result;
+                Console.WriteLine(result.Content.ReadAsStringAsync().Result);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Stock not found to update!", ex);
+            }
         }
     }
 }
