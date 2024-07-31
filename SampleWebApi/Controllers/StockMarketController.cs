@@ -52,6 +52,7 @@ namespace SampleWebApi.Controllers
             found.Name = stock.Name;
             found.Description = stock.Description;
             found.UnitPrice = stock.UnitPrice;
+            _context.SaveChanges();
             return Ok("Updated successfully!");
         }
 
