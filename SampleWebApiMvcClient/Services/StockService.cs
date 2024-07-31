@@ -10,7 +10,7 @@ namespace SampleWebApiMvcClient.Services
         Stock GetStockById(int id);
         void AddNewStock(Stock stock);
         void UpdateStock(Stock stock);
-        void DeleteStock(Stock stock);
+        void DeleteStock(int id);
 
     }
     public class StockService : IStockService
@@ -37,11 +37,24 @@ namespace SampleWebApiMvcClient.Services
 
         public void AddNewStock(Stock stock)
         {
+            var json = JsonSerializer.Serialize(stock);
+            var content = new StringContent(json);
+            var response = httpClient.PostAsync("Stocks", content).Result;
+            Console.WriteLine(response.Content.ReadAsStringAsync().Result);
         }
 
-        public void DeleteStock(Stock stock)
+        public void DeleteStock(int id)
         {
-            throw new NotImplementedException();
+            var result = httpClient.DeleteAsync($"Stocks/{id}").Result;
+            var deletedRecord = JsonSerializer.Deserialize<Stock>(
+                result.Content.ReadAsStringAsync().Result, new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true
+                });
+            if (deletedRecord is null)
+            {
+                throw new Exception("Stock not found to delete!");
+            }
         }
 
         public Stock GetStockById(int id)
