@@ -69,3 +69,4 @@ C:\Users\6147952\source\repos\DataAccessRecap\ConsoleApp1\bin\Debug\net8.0\DataA
 C:\Users\6147952\source\repos\DataAccessRecap\ConsoleApp1\bin\Debug\net8.0\DataAccessRecap.pdb
 C:\Users\6147952\source\repos\DataAccessRecap\ConsoleApp1\obj\Debug\net8.0\ConsoleApp1.csproj.AssemblyReference.cache
 C:\Users\6147952\source\repos\DataAccessRecap\ConsoleApp1\obj\Debug\net8.0\ConsoleA.CB28C8CC.Up2Date
+C:\Users\6147952\source\repos\DataAccessRecap\ConsoleApp1\obj\Debug\net8.0\ConsoleApp1.sourcelink.json
